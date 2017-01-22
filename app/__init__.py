@@ -6,4 +6,4 @@ from flask import Flask
 app = Flask(__name__)
 
 # importação é feita depois porque precisa da variável app
-from controllers import default
+from app.controllers import default
