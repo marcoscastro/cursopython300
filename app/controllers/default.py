@@ -15,3 +15,7 @@ def sobre():
 @app.route('/contato')
 def contato():
     return render_template('contato.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
