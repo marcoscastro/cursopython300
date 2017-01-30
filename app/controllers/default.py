@@ -8,7 +8,9 @@ from flask import render_template, request, redirect, url_for
 @app.route('/')
 def index():
     aula = Aula.query.filter_by(id=1).first()
-    return render_template('index.html', aula=aula)
+    if aula != None:
+        progresso = int((aula.id / len(Aula.query.all())) * 100)
+    return render_template('index.html', aula=aula, progresso=progresso)
 
 @app.route('/sobre')
 def sobre():
@@ -51,4 +53,5 @@ def aula(aula_id):
     aula = Aula.query.filter_by(id=aula_id).first()
     if aula is None:
         return redirect(url_for('index'))
-    return render_template('aula.html', aula=aula)
+    progresso = int((aula.id / len(Aula.query.all())) * 100)
+    return render_template('index.html', aula=aula, progresso=progresso)
