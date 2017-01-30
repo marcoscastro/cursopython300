@@ -49,10 +49,10 @@
                 <ul class="nav navbar-nav">
                     {% block navbar %}
                     <li>
-                        <a href="/sobre">Sobre</a>
+                        <a href="{{ url_for('sobre') }}">Sobre</a>
                     </li>
                     <li>
-                        <a href="/contato">Contato</a>
+                        <a href="{{ url_for('contato') }}">Contato</a>
                     </li>
                     <li>
                         <a href="http://apoia.se/marcoscastro">Seja um apoiador!</a>
