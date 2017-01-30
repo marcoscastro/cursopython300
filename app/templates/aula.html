@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block botao_aula1 %}
+  <button type="button" class="btn btn-default btn-lg" onclick="location.href='{{ url_for('aula', aula_id=aula.id-1) }}'">Anterior</button>
+  <button type="button" class="btn btn-default btn-lg" onclick="location.href='{{ url_for('aula', aula_id=aula.id+1) }}'">Próximo</button>
+{% endblock %}
+
+{% block botao_aula2 %}
+  <button type="button" class="btn btn-default btn-lg" onclick="location.href='{{ url_for('aula', aula_id=aula.id-1) }}'">Anterior</button>
+  <button type="button" class="btn btn-default btn-lg" onclick="location.href='{{ url_for('aula', aula_id=aula.id+1) }}'">Próximo</button>
+{% endblock %}

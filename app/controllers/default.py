@@ -7,7 +7,8 @@ from flask import render_template, request, redirect, url_for
 # a função route serve para definir uma rota para a página
 @app.route('/')
 def index():
-    return render_template('index.html')
+    aula = Aula.query.filter_by(id=1).first()
+    return render_template('index.html', aula=aula)
 
 @app.route('/sobre')
 def sobre():
@@ -44,3 +45,10 @@ def adicionar_aula():
             return render_template('adicionar_aula.html', sucesso=True)
         return render_template('adicionar_aula.html', sucesso=False)
     return render_template('adicionar_aula.html', sucesso=None)
+
+@app.route('/aula/<aula_id>')
+def aula(aula_id):
+    aula = Aula.query.filter_by(id=aula_id).first()
+    if aula is None:
+        return redirect(url_for('index'))
+    return render_template('aula.html', aula=aula)

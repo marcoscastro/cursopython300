@@ -13,7 +13,7 @@ class Aula(db.Model):
     # construtor da classe - serve para inicializar os campos
     def __init__(self, titulo, url, descricao):
         self.titulo = titulo
-        self.url = url
+        self.url = url.replace('watch?v=', 'embed/')
         self.descricao = descricao
 
     # representação do objeto
