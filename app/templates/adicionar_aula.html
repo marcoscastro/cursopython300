@@ -3,4 +3,34 @@
 {% block admin_func %}Adicionar aula{% endblock %}
 
 {% block admin %}
+  {% if sucesso != None %}
+    {% if sucesso == False %}
+      <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Erro ao cadastrar a aula, tente novamente...</strong>
+      </div>
+    {% else %}
+      <div class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Aula cadastrada com sucesso!</strong>
+      </div>
+    {% endif %}
+  {% endif %}
+  <form action="{{ url_for('adicionar_aula') }}" method="POST">
+      <div class="form-group">
+          <label for="titulo_aula">Título da aula:</label>
+          <input type="text" id="titulo_aula" name="titulo_aula" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="url_aula">URL do Youtube:</label>
+          <input type="text" id="url_aula" name="url_aula" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="desc_aula">Descrição da aula:</label>
+          <textarea id="desc_aula" name="desc_aula" class="form-control" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+          <input type="submit" class="btn btn-danger btn-lg btn-block login-button" value="Adicionar aula">
+      </div>
+  </form>
 {% endblock %}

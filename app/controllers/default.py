@@ -1,4 +1,5 @@
-from app import app
+from app import app, db
+from app.models.tables import Aula
 from flask import render_template, request, redirect, url_for
 
 # decorator serve para aplicar uma função em cima de outra
@@ -32,4 +33,14 @@ def login():
 
 @app.route('/admin/adicionar_aula', methods=['POST', 'GET'])
 def adicionar_aula():
-    return render_template('adicionar_aula.html')
+    if request.method == 'POST':
+        titulo = request.form['titulo_aula']
+        url = request.form['url_aula']
+        desc = request.form['desc_aula']
+        if titulo and url and desc:
+            aula = Aula(titulo=titulo, url=url, descricao=desc)
+            db.session.add(aula)
+            db.session.commit()
+            return render_template('adicionar_aula.html', sucesso=True)
+        return render_template('adicionar_aula.html', sucesso=False)
+    return render_template('adicionar_aula.html', sucesso=None)
